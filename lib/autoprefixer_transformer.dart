@@ -135,7 +135,6 @@ class Transformer extends AggregateTransformer implements
 Future _autoprefixer(String filepath, List<String> browsers) {
   var browserFlag = browsers.join(', ');
   var flags = ['-m', '-b', browserFlag, filepath];
-  print(flags);
   return Process.run('autoprefixer', flags).then((result) {
     if (result.exitCode == 0) {
       var cssFuture = new File(filepath).readAsBytes();
