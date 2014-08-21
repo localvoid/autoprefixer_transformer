@@ -35,7 +35,8 @@ class TransformerOptions {
 /**
  * Parses css and adds vendor prefixes to CSS rules.
  */
-class Transformer extends AggregateTransformer {
+class Transformer extends AggregateTransformer implements
+    DeclaringAggregateTransformer {
   final BarbackSettings _settings;
   final TransformerOptions _options;
 
@@ -117,6 +118,16 @@ class Transformer extends AggregateTransformer {
           });
         });
       });
+    });
+  }
+
+  Future declareOutputs(DeclaringAggregateTransform transform) {
+    return transform.primaryIds.take(2).toList().then((assets) {
+      var cssAssets = assets.where((a) => a.extension == '.css');
+      if (cssAssets.isNotEmpty) {
+        transform.declareOutput(cssAssets.first);
+        transform.declareOutput(cssAssets.first.addExtension('.map'));
+      }
     });
   }
 }
