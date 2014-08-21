@@ -1,12 +1,12 @@
 # [autoprefixer](https://github.com/postcss/autoprefixer)_transformer 
 
 > [pub](https://pub.dartlang.org/) transformer that parses css and
-> adds vendor prefixes to CSS rules.
+> adds vendor prefixes to css rules.
 
 ## Prerequisites
 
 This transformer depends on
-[autoprefixer](https://github.com/postcss/autoprefixer) CLI utility
+[autoprefixer](https://github.com/postcss/autoprefixer) CLI tool
 that performs transformations.
 
 ## Usage example
@@ -25,7 +25,7 @@ transformers:
 
 ### `web/example.css`
 
-```
+```css
 .noselect {
   user-select: none;
 }
