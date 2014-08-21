@@ -113,9 +113,9 @@ class Transformer extends AggregateTransformer implements
           if (mapFileSink != null) {
             futures.add(mapFileSink.close());
           }
-          return Future.wait(futures).then((_) {
-            return dir.delete(recursive: true);
-          });
+          return Future.wait(futures);
+        }).whenComplete(() {
+          return dir.delete(recursive: true);
         });
       });
     });
