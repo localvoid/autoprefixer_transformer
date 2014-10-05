@@ -38,7 +38,7 @@ transformers:
 Path to the [autoprefixer](https://github.com/postcss/autoprefixer)
 executable.
 
-TYPE: `String`__
+TYPE: `String`  
 DEFAULT: `autoprefixer`
 
 ### `browsers`
