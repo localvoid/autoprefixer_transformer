@@ -10,14 +10,12 @@ import 'dart:io';
 import 'package:barback/barback.dart';
 import 'package:path/path.dart' as ospath;
 
-/**
- * Transformer Options:
- *
- * [browsers] Browsers you want to target. DEFAULT: > 1%
- */
+/// Transformer Options:
+///
+/// * [browsers] Browsers you want to target. DEFAULT: > 1%
 class TransformerOptions {
   static const _defaultExecutable = 'autoprefixer';
-  static final _DEFAULT_BROWSERS = ['> 1%'];
+  static final _defaultBrowsers = ['> 1%'];
 
   final String executable;
   final List<String> browsers;
@@ -32,13 +30,11 @@ class TransformerOptions {
 
     return new TransformerOptions(
         config('executable', _defaultExecutable),
-        config('browsers', _DEFAULT_BROWSERS));
+        config('browsers', _defaultBrowsers));
   }
 }
 
-/**
- * Parses css and adds vendor prefixes to CSS rules.
- */
+/// Parses css and adds vendor prefixes to CSS rules.
 class Transformer extends AggregateTransformer implements
     DeclaringAggregateTransformer {
   final BarbackSettings _settings;
