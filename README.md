@@ -33,6 +33,14 @@ transformers:
 
 ## Options
 
+### `executable`
+
+Path to the [autoprefixer](https://github.com/postcss/autoprefixer)
+executable.
+
+TYPE: `String`__
+DEFAULT: `autoprefixer`
+
 ### `browsers`
 
 Browsers you want to target.

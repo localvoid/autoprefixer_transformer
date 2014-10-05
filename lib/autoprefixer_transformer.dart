@@ -16,11 +16,13 @@ import 'package:path/path.dart' as ospath;
  * [browsers] Browsers you want to target. DEFAULT: > 1%
  */
 class TransformerOptions {
+  static const _defaultExecutable = 'autoprefixer';
   static final _DEFAULT_BROWSERS = ['> 1%'];
 
+  final String executable;
   final List<String> browsers;
 
-  TransformerOptions(this.browsers);
+  TransformerOptions(this.executable, this.browsers);
 
   factory TransformerOptions.parse(Map configuration) {
     config(key, defaultValue) {
@@ -28,7 +30,9 @@ class TransformerOptions {
       return value != null ? value : defaultValue;
     }
 
-    return new TransformerOptions(config('browsers', _DEFAULT_BROWSERS));
+    return new TransformerOptions(
+        config('executable', _defaultExecutable),
+        config('browsers', _DEFAULT_BROWSERS));
   }
 }
 
@@ -99,7 +103,10 @@ class Transformer extends AggregateTransformer implements
           }
 
           return Future.wait(futures).then((results) {
-            return _autoprefixer(cssPath, _options.browsers);
+            return _autoprefixer(
+                _options.executable,
+                cssPath,
+                _options.browsers);
           }).then((results) {
             transform.addOutput(new Asset.fromBytes(cssAsset.id, results[0]));
             transform.addOutput(
@@ -132,10 +139,10 @@ class Transformer extends AggregateTransformer implements
   }
 }
 
-Future _autoprefixer(String filepath, List<String> browsers) {
+Future _autoprefixer(String exec, String filepath, List<String> browsers) {
   var browserFlag = browsers.join(', ');
   var flags = ['-m', '-b', browserFlag, filepath];
-  return Process.run('autoprefixer', flags).then((result) {
+  return Process.run(exec, flags).then((result) {
     if (result.exitCode == 0) {
       var cssFuture = new File(filepath).readAsBytes();
       var mapFuture = new File(filepath + '.map').readAsBytes();
