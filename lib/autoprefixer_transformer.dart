@@ -2,7 +2,7 @@
 // the AUTHORS file for details. All rights reserved. Use of this source code
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-/* Transfomer that parses css and adds vendor prefixes to CSS rules. */
+/// Transfomer that parses css and adds vendor prefixes to CSS rules.
 library autoprefixer_transformer;
 
 import 'dart:async';
@@ -12,7 +12,8 @@ import 'package:path/path.dart' as ospath;
 
 /// Transformer Options:
 ///
-/// * [browsers] Browsers you want to target. DEFAULT: > 1%
+/// * [executable] Path to the autoprefixer executable. DEFAULT: `'autoprefixer'`
+/// * [browsers] Browsers you want to target. DEFAULT: `'> 1%'`
 class TransformerOptions {
   static const _defaultExecutable = 'autoprefixer';
   static final _defaultBrowsers = ['> 1%'];
