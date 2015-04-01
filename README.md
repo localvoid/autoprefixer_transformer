@@ -1,4 +1,4 @@
-# [autoprefixer](https://github.com/postcss/autoprefixer)_transformer 
+# autoprefixer_transformer 
 
 > [pub](https://pub.dartlang.org/) transformer that parses css and
 > adds vendor prefixes to css rules.
@@ -47,3 +47,10 @@ Browsers you want to target.
 
 TYPE: `List<String>`  
 DEFAULT: `[> 1%]`
+
+### `source_map`
+
+Generate source map in release mode.
+
+TYPE: `bool`  
+DEFAULT: `false`
