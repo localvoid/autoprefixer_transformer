@@ -1,5 +1,5 @@
 name: autoprefixer_transformer
-version: 0.2.0
+version: 0.2.1
 author: Boris Kaul <localvoid@gmail.com>
 description: Transfomer that parses css and adds vendor prefixes to CSS rules.
 homepage: https://github.com/localvoid/autoprefixer_transformer
